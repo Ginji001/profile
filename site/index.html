@@ -55,6 +55,8 @@ svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke
 .hero p{margin:2px 0 0;color:var(--muted);font-size:14px;font-weight:500}
 .pill{display:inline-flex;margin-top:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--muted)}
 .pill b{color:var(--ink);margin-left:6px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.pills .pill{margin-top:0}
+.pill[hidden]{display:none}
 
 .card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
 
@@ -147,7 +149,7 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
         <p data-i18n="role">つくる人 / コスメ成分ノート</p>
       </div>
     </div>
-    <span class="pill"><span data-i18n="since">GitHub</span><b>Ginji001</b></span>
+    <div class="pills"><span class="pill" id="visits" hidden><span data-i18n="visits">累計アクセス</span><b id="vcount"></b></span><span class="pill"><span data-i18n="since">GitHub</span><b>Ginji001</b></span></div>
 
     <div class="card contrib">
       <div class="contrib-head">
@@ -264,7 +266,20 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
     g.setAttribute('aria-label','GitHub contributions: '+d.total+' in the last year');
   }).catch(function(){});
 
-  var EN={role:"Maker / Cosme Ingredient Notes",since:"GitHub",less:"Less",more:"More",latestK:"Posting daily",latestT:"#コスメ成分ノート",latestS:"X at 9:00 / 13:00 / 19:00",
+  /* 累計アクセス：自宅サーバーのカウンター。同じブラウザからは1日1回だけ数える。届かないときは表示しない */
+  (function(){
+    var api='https://thidwave-pc.tail103e61.ts.net/counter',today=new Date().toISOString().slice(0,10),hit=true;
+    try{hit=localStorage.getItem('visited')!==today;}catch(e){}
+    var ctl=window.AbortController?new AbortController():null;if(ctl) setTimeout(function(){ctl.abort();},5000);
+    fetch(api+(hit?'?hit=1':''),{cache:'no-store',signal:ctl?ctl.signal:undefined}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+      if(!d||typeof d.total!=='number') return;
+      if(hit){try{localStorage.setItem('visited',today);}catch(e){}}
+      document.getElementById('vcount').textContent=d.total.toLocaleString('ja-JP');
+      document.getElementById('visits').hidden=false;
+    }).catch(function(){});
+  })();
+
+  var EN={visits:"Total visits",role:"Maker / Cosme Ingredient Notes",since:"GitHub",less:"Less",more:"More",latestK:"Posting daily",latestT:"#コスメ成分ノート",latestS:"X at 9:00 / 13:00 / 19:00",
     product:"Things I made",seeMore:"See more",
     p2n:"Skincare Book",p2d:"A free PWA to register your cosmetics and plan morning and night routines by weekday. It also flags overlapping ingredients and combinations said to irritate.",
     p5n:"Japan Cosmetic Exam Lv.1 Study Notes",p5d:"A study PWA for the exam: study plan, per-question records and accuracy, a mistakes notebook, and last-minute flashcards.",
