@@ -1,10 +1,22 @@
-# profile
+# 銀次 / Ginji profile
 
-銀次 / Ginji のプロフィールページ。https://ginji001.github.io/profile/
+銀次 / Ginji のプロフィールサイトです。GitHub Pages で静的配信します。
 
-- `site/index.html` … ページ本体（1ファイル。表示内容もここで編集）
-- `site/contributions.json` … GitHubの草のデータ。GitHub Actionsが毎日作り直す
-- `scripts/contributions.mjs` … 公開プロフィールから草を取得するスクリプト（トークン不要）
-- `.github/workflows/deploy.yml` … 草の更新と GitHub Pages への公開（毎日 0:17 JST、push 時、手動実行）
+このサイトは [yksr-melt/profile-page](https://github.com/yksr-melt/profile-page)（MIT）を元にしています。ライセンス表記は [LICENSE](LICENSE) を参照してください。
 
-サーバーは使わず、公開リポジトリの標準ランナーで動くため無料。
+## 開発
+
+Node.js 22.14.0 を使います。
+
+```sh
+npm ci
+npm run dev
+```
+
+## ビルド
+
+```sh
+npm run build
+```
+
+ビルドは `/profile/` を base にし、Home / Product / Cosme / Me / Links の各URLを事前描画して `dist/` に出力します。GitHub Actions が草データを取得して Pages に公開します。
