@@ -9,129 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#fafafa; --card:#ffffff; --ink:#18181b; --muted:#71717a; --line:#ececef; --chip:#f4f4f5;
-  --pink:#b8642a; --pink2:#d9925a; --pinkbg:#f8ece2;
-  --g0:#f1f1f3; --g1:#f1d9c4; --g2:#ddb08a; --g3:#c27c45; --g4:#8f4e1f;
-  --shadow:0 1px 2px rgba(24,24,27,.04),0 8px 24px rgba(24,24,27,.04);
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f0f11; --card:#18181b; --ink:#f4f4f5; --muted:#a1a1aa; --line:#27272a; --chip:#27272a;
-  --pinkbg:#3a2618; --g0:#232327; --g1:#4a2f1c; --g2:#7a4a26; --g3:#b8743f; --g4:#e2a877;
-  --shadow:none;
-}}
-:root[data-theme="dark"]{
-  --bg:#0f0f11; --card:#18181b; --ink:#f4f4f5; --muted:#a1a1aa; --line:#27272a; --chip:#27272a;
-  --pinkbg:#3a2618; --g0:#232327; --g1:#4a2f1c; --g2:#7a4a26; --g3:#b8743f; --g4:#e2a877;
-  --shadow:none;
-}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);
-  font-family:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Hiragino Sans",system-ui,sans-serif;
-  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-main{max-width:672px;margin:0 auto;padding:40px 20px 140px}
-a{color:inherit;text-decoration:none}
-a:focus-visible,button:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:12px}
-svg.i{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-
-/* language */
-.top{display:flex;justify-content:flex-end}
-.lang{display:inline-flex;align-items:center;gap:2px;background:var(--card);border-radius:999px;padding:4px 6px 4px 10px;box-shadow:var(--shadow);border:1px solid var(--line)}
-.lang .tr{color:var(--muted);width:16px;height:16px;margin-right:4px}
-.lang button{border:0;background:none;color:var(--muted);font:inherit;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--pink);color:#fff}
-
-/* hero */
-.hero{display:flex;align-items:center;gap:16px;margin-top:8px}
-.avatar{flex:none;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(135deg,#dca576,#b8642a);color:#fff;font-size:28px;font-weight:900;box-shadow:var(--shadow)}
-.hero h1{margin:0;font-size:24px;font-weight:900;letter-spacing:-.025em;line-height:1.35}
-.hero h1 .sl{color:var(--muted);font-weight:500;margin:0 2px}
-.hero p{margin:2px 0 0;color:var(--muted);font-size:14px;font-weight:500}
-.pill{display:inline-flex;margin-top:16px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--muted)}
-.pill b{color:var(--ink);margin-left:6px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.pills .pill{margin-top:0}
-.pill[hidden]{display:none}
-
-.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
-
-/* contributions */
-.contrib{margin-top:24px;padding:20px}
-.contrib-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px}
-.contrib-head h2{margin:0;font-size:14px;font-weight:700}
-.contrib-head h2 small{color:var(--muted);font-weight:500;font-size:12px;margin-left:6px}
-.legend{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted)}
-.legend i{width:10px;height:10px;border-radius:3px;display:block}
-.graph-wrap{overflow-x:auto;scrollbar-width:none;direction:rtl}.graph-wrap::-webkit-scrollbar{display:none}.graph{direction:ltr}
-.graph{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7,10px);grid-auto-columns:10px;gap:3px;width:max-content}
-.graph i{display:block;border-radius:3px;background:var(--g0)}
-.graph i[data-l="1"]{background:var(--g1)}.graph i[data-l="2"]{background:var(--g2)}
-.graph i[data-l="3"]{background:var(--g3)}.graph i[data-l="4"]{background:var(--g4)}
-
-/* latest card */
-.latest{margin-top:16px;padding:16px;display:flex;align-items:center;gap:16px}
-.latest .ic{flex:none;width:64px;height:64px;border-radius:16px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,#dca576,#b8642a)}
-.latest .ic svg{width:28px;height:28px}
-.latest .k{font-size:12px;font-weight:700;color:var(--pink)}
-.latest .t{font-weight:700;margin-top:2px}
-.latest .s{font-size:14px;color:var(--muted)}
-
-/* sections */
-section{margin-top:56px}
-.sh{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;gap:12px}
-.eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--pink);text-transform:uppercase}
-.sh h2{margin:2px 0 0;font-size:20px;font-weight:900;display:flex;align-items:center;gap:6px}
-.sh h2 svg{color:var(--pink)}
-.more{flex:none;display:inline-flex;align-items:center;gap:2px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:999px;padding:5px 10px 5px 14px;font-size:12px;font-weight:700;color:var(--ink)}
-.more svg{width:14px;height:14px}
-.more:hover{color:var(--pink)}
-
-.prod{display:block;padding:20px;margin-top:12px;transition:border-color .15s}
-.prod:first-child{margin-top:0}
-a.prod:hover{border-color:var(--g2)}
-.prod .n{display:flex;align-items:center;gap:10px;font-weight:700}
-.prod .e{font-size:22px;line-height:1}
-.prod p{margin:10px 0 0;font-size:14px;color:var(--muted);line-height:1.7}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.tags span{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--pinkbg);color:var(--pink)}
-.tags.gray span{background:var(--chip);color:var(--ink);font-weight:500}
-
-.dark{display:flex;justify-content:space-between;align-items:center;padding:24px 20px;border-radius:24px;color:#fff;
-  background:linear-gradient(120deg,#18181b,#3f3f46)}
-.dark .k{font-size:12px;font-weight:700;color:var(--pink2);letter-spacing:.04em}
-.dark .t{font-size:20px;font-weight:900;margin-top:4px}
-.dark .s{font-size:12px;color:#d4d4d8;margin-top:4px}
-.dark svg{width:36px;height:36px;color:#e4e4e7;flex:none}
-
-.me{padding:20px}
-.me p{margin:0;font-size:14px;color:var(--muted);line-height:1.8}
-
-.links{display:flex;flex-wrap:wrap;gap:12px}
-.links a{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;color:#fff;box-shadow:var(--shadow);transition:transform .15s}
-.links a:hover{transform:translateY(-2px)}
-.links svg{width:26px;height:26px}
-.l-gh{background:linear-gradient(135deg,#3f3f46,#71717a)}
-.l-x{background:linear-gradient(135deg,#0ea5e9,#3b82f6)}
-.l-ig{background:linear-gradient(135deg,#e0a36b,#c2410c)}
-.l-note{background:linear-gradient(135deg,#2dd4bf,#10b981)}
-.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-/* dock */
-nav.dock{position:fixed;left:50%;transform:translateX(-50%);bottom:0;padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:10}
-nav.dock ul{list-style:none;margin:0;padding:8px;display:flex;align-items:center;gap:4px;background:color-mix(in srgb,var(--card) 85%,transparent);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:40px;box-shadow:0 10px 30px rgba(24,24,27,.10)}
-nav.dock a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:64px;height:60px;border-radius:24px;font-size:10px;font-weight:700;color:var(--muted)}
-nav.dock a svg{width:22px;height:22px}
-nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff;background:linear-gradient(135deg,#d08a52,#b8642a);box-shadow:0 8px 20px rgba(184,100,42,.35)}
-@media (max-width:420px){nav.dock a{width:56px}nav.dock a[aria-current="true"]{width:64px;height:66px}}
-</style>
+<link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body data-home>
 <main>
   <div class="top">
     <div class="lang" role="group" aria-label="Language">
@@ -140,8 +20,7 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
   </div>
-
-  <header id="home">
+  <header>
     <div class="hero">
       <div class="avatar" aria-hidden="true">銀</div>
       <div>
@@ -169,39 +48,24 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
     </a>
   </header>
 
-  <section id="product">
+  <section>
     <div class="sh">
       <div><span class="eyebrow">Product</span>
       <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6.5v9L12 20l8-4.5v-9z"/><path d="M4 6.5 12 11l8-4.5"/><path d="M12 11v9"/></svg><span data-i18n="product">作ったもの</span></h2></div>
-      <a class="more" href="https://github.com/Ginji001?tab=repositories" target="_blank" rel="noopener"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a class="more" href="./product/"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </div>
     <a class="card prod" href="https://ginji001.github.io/skincare-pwa/" target="_blank" rel="noopener">
       <span class="n"><span class="e" aria-hidden="true">🧴</span><span data-i18n="p2n">スキンケア帳</span></span>
       <p data-i18n="p2d">化粧品の登録と、曜日ごとの朝・夜ルーティンを管理する無料のPWA。成分の重なりや、刺激が出やすいとされる組み合わせも表示。</p>
       <span class="tags"><span>PWA</span><span>Skincare</span></span>
     </a>
-    <a class="card prod" href="https://ginji001.github.io/kintore-log/" target="_blank" rel="noopener">
-      <span class="n"><span class="e" aria-hidden="true">🏋️</span><span data-i18n="p4n">筋トレ記録</span></span>
-      <p data-i18n="p4d">ジムのトレーニングを記録して、次回の重量を自動で入れる筋トレPWA。テンプレートからメニューを作れ、ログイン不要でデータは端末の中だけ。</p>
-      <span class="tags"><span>PWA</span><span>Workout</span></span>
-    </a>
-    <a class="card prod" href="https://ginji001.github.io/cosme-kentei-note/" target="_blank" rel="noopener">
-      <span class="n"><span class="e" aria-hidden="true">📒</span><span data-i18n="p5n">日本化粧品検定1級 学習ノート</span></span>
-      <p data-i18n="p5d">学習計画、問題ごとの記録と正答率、間違いノート、直前暗記カードをまとめた受験勉強用のPWA。</p>
-      <span class="tags"><span>PWA</span><span data-i18n="own">非公式</span></span>
-    </a>
-    <a class="card prod" href="https://ginji001.github.io/seibun-kentei-note/" target="_blank" rel="noopener">
-      <span class="n"><span class="e" aria-hidden="true">🧪</span><span data-i18n="p6n">化粧品成分検定1級 学習ノート</span></span>
-      <p data-i18n="p6d">成分のまとめ、問題演習の記録と正答率、直前暗記カードをまとめた受験勉強用のPWA。</p>
-      <span class="tags"><span>PWA</span><span data-i18n="own">非公式</span></span>
-    </a>
   </section>
 
-  <section id="cosme">
+  <section>
     <div class="sh">
       <div><span class="eyebrow">Cosme</span>
       <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5L5 19a2 2 0 0 0 1.8 2.8h10.4A2 2 0 0 0 19 19l-5-11V3"/></svg><span data-i18n="cosme">発信していること</span></h2></div>
-      <a class="more" href="https://note.com/emiya001" target="_blank" rel="noopener"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a class="more" href="./cosme/"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </div>
     <div class="dark">
       <div>
@@ -213,11 +77,11 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
     </div>
   </section>
 
-  <section id="me">
+  <section>
     <div class="sh">
       <div><span class="eyebrow">Me</span>
       <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span data-i18n="me">自分自身</span></h2></div>
-      <a class="more" href="https://note.com/emiya001" target="_blank" rel="noopener"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
+      <a class="more" href="./me/"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </div>
     <div class="card me">
       <p data-i18n="meText">化粧品の成分と、身の回りを便利にするアプリづくりが好きです。筋トレも続けています。</p>
@@ -225,10 +89,11 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
     </div>
   </section>
 
-  <section id="links">
+  <section>
     <div class="sh">
       <div><span class="eyebrow">Links</span>
       <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><path d="M8 12h8"/></svg><span data-i18n="links">リンク集</span></h2></div>
+      <a class="more" href="./links/"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </div>
     <div class="links">
       <a class="l-gh" href="https://github.com/Ginji001" target="_blank" rel="noopener" title="GitHub"><span class="vh">GitHub</span>
@@ -243,70 +108,9 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
   </section>
 </main>
 
-<nav class="dock" aria-label="Sections">
-  <ul>
-    <li><a href="#product"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6.5v9L12 20l8-4.5v-9z"/><path d="M4 6.5 12 11l8-4.5"/><path d="M12 11v9"/></svg>Product</a></li>
-    <li><a href="#cosme"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5L5 19a2 2 0 0 0 1.8 2.8h10.4A2 2 0 0 0 19 19l-5-11V3"/></svg>Cosme</a></li>
-    <li><a href="#home" aria-current="true"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Home</a></li>
-    <li><a href="#me"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Me</a></li>
-    <li><a href="#links"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><path d="M8 12h8"/></svg>Links</a></li>
-  </ul>
+<nav class="dock" aria-label="Pages">
+  <ul><li><a href="./product/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6.5v9L12 20l8-4.5v-9z"/><path d="M4 6.5 12 11l8-4.5"/><path d="M12 11v9"/></svg>Product</a></li><li><a href="./cosme/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v5L5 19a2 2 0 0 0 1.8 2.8h10.4A2 2 0 0 0 19 19l-5-11V3"/></svg>Cosme</a></li><li><a href="./" aria-current="page"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Home</a></li><li><a href="./me/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Me</a></li><li><a href="./links/"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><path d="M8 12h8"/></svg>Links</a></li></ul>
 </nav>
-
-<script>
-(function(){
-  /* 草：GitHub Actionsが毎日 contributions.json を作り直す */
-  var g=document.getElementById('graph');
-  fetch('contributions.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-    if(!d||!d.levels) return;
-    var f=document.createDocumentFragment();
-    for(var i=0;i<d.levels.length;i++){var c=document.createElement('i');c.setAttribute('data-l',d.levels[i]);f.appendChild(c);}
-    g.appendChild(f);g.parentNode.scrollLeft=g.parentNode.scrollWidth;
-    document.getElementById('ctotal').textContent=d.total+' / year';
-    g.setAttribute('aria-label','GitHub contributions: '+d.total+' in the last year');
-  }).catch(function(){});
-
-  /* 累計アクセス：自宅サーバーのカウンター。同じブラウザからは1日1回だけ数える。届かないときは表示しない */
-  (function(){
-    var api='https://thidwave-pc.tail103e61.ts.net/counter',today=new Date().toISOString().slice(0,10),hit=true;
-    try{hit=localStorage.getItem('visited')!==today;}catch(e){}
-    var ctl=window.AbortController?new AbortController():null;if(ctl) setTimeout(function(){ctl.abort();},5000);
-    fetch(api+(hit?'?hit=1':''),{cache:'no-store',signal:ctl?ctl.signal:undefined}).then(function(r){return r.ok?r.json():null;}).then(function(d){
-      if(!d||typeof d.total!=='number') return;
-      if(hit){try{localStorage.setItem('visited',today);}catch(e){}}
-      document.getElementById('vcount').textContent=d.total.toLocaleString('ja-JP');
-      document.getElementById('visits').hidden=false;
-    }).catch(function(){});
-  })();
-
-  var EN={visits:"Total visits",role:"Maker / Cosme Ingredient Notes",since:"GitHub",less:"Less",more:"More",latestK:"Posting daily",latestT:"#コスメ成分ノート",latestS:"X at 9:00 / 13:00 / 19:00",
-    product:"Things I made",seeMore:"See more",
-    p2n:"Skincare Book",p2d:"A free PWA to register your cosmetics and plan morning and night routines by weekday. It also flags overlapping ingredients and combinations said to irritate.",
-    p5n:"Japan Cosmetic Exam Lv.1 Study Notes",p5d:"A study PWA for the exam: study plan, per-question records and accuracy, a mistakes notebook, and last-minute flashcards.",
-    p6n:"Cosmetic Ingredient Exam Lv.1 Study Notes",p6d:"A study PWA with ingredient notes, practice-question records and accuracy, and last-minute flashcards.",own:"Unofficial",
-    p4n:"Workout Log",p4d:"A workout PWA for the gym that fills in your next weights automatically. Start from a template; no login, data stays on your device.",
-    cosme:"What I post",cnT:"4 posts a day",cnS:"X 3 times a day · Instagram at 9:00",
-    me:"About me",meText:"I love cosmetic ingredients and building small apps that make everyday life easier. I keep up strength training, too.",links:"Links"};
-  var JA={}; document.querySelectorAll('[data-i18n]').forEach(function(el){JA[el.dataset.i18n]=el.textContent;});
-  function setLang(l){
-    var d=l==='en'?EN:JA;
-    document.querySelectorAll('[data-i18n]').forEach(function(el){var v=d[el.dataset.i18n];if(v!=null)el.textContent=v;});
-    document.documentElement.lang=l;
-    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===l));});
-    try{localStorage.setItem('lang',l);}catch(e){}
-  }
-  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
-  try{if(localStorage.getItem('lang')==='en')setLang('en');}catch(e){}
-
-  var links=[].slice.call(document.querySelectorAll('nav.dock a')),ids=['home','product','cosme','me','links'];
-  function onScroll(){
-    var cur='home';
-    ids.forEach(function(id){var el=document.getElementById(id);if(id!=='home'&&el.getBoundingClientRect().top<window.innerHeight*0.45)cur=id;});
-    if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)cur='links';
-    links.forEach(function(a){a.setAttribute('aria-current',String(a.getAttribute('href')==='#'+cur));});
-  }
-  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-})();
-</script>
+<script src="./app.js"></script>
 </body>
 </html>
