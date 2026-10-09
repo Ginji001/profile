@@ -91,7 +91,7 @@ section{margin-top:56px}
 
 .prod{display:block;padding:20px;margin-top:12px;transition:border-color .15s}
 .prod:first-child{margin-top:0}
-.prod:hover{border-color:var(--g2)}
+a.prod:hover{border-color:var(--g2)}
 .prod .n{display:flex;align-items:center;gap:10px;font-weight:700}
 .prod .e{font-size:22px;line-height:1}
 .prod p{margin:10px 0 0;font-size:14px;color:var(--muted);line-height:1.7}
@@ -173,9 +173,9 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
       <h2><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6.5v9L12 20l8-4.5v-9z"/><path d="M4 6.5 12 11l8-4.5"/><path d="M12 11v9"/></svg><span data-i18n="product">作ったもの</span></h2></div>
       <a class="more" href="https://github.com/Ginji001?tab=repositories" target="_blank" rel="noopener"><span data-i18n="seeMore">もっと見る</span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
     </div>
-    <a class="card prod" href="https://ginji001.github.io/skincare-note/" target="_blank" rel="noopener">
-      <span class="n"><span class="e" aria-hidden="true">🧴</span><span data-i18n="p2n">スキンケアノート</span></span>
-      <p data-i18n="p2d">製品登録、曜日別の朝夜ルーティン、成分の重なりチェックができる無料のスキンケア管理PWA。</p>
+    <a class="card prod" href="https://ginji001.github.io/skincare-pwa/" target="_blank" rel="noopener">
+      <span class="n"><span class="e" aria-hidden="true">🧴</span><span data-i18n="p2n">スキンケア帳</span></span>
+      <p data-i18n="p2d">化粧品の登録と、曜日ごとの朝・夜ルーティンを管理する無料のPWA。成分の重なりや、刺激が出やすいとされる組み合わせも表示。</p>
       <span class="tags"><span>PWA</span><span>Skincare</span></span>
     </a>
     <a class="card prod" href="https://ginji001.github.io/kintore-log/" target="_blank" rel="noopener">
@@ -183,6 +183,16 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
       <p data-i18n="p4d">ジムのトレーニングを記録して、次回の重量を自動で入れる筋トレPWA。テンプレートからメニューを作れ、ログイン不要でデータは端末の中だけ。</p>
       <span class="tags"><span>PWA</span><span>Workout</span></span>
     </a>
+    <div class="card prod">
+      <span class="n"><span class="e" aria-hidden="true">📒</span><span data-i18n="p5n">日本化粧品検定1級 学習ノート</span></span>
+      <p data-i18n="p5d">学習計画、問題ごとの記録と正答率、間違いノート、直前暗記カードをまとめた受験勉強用のPWA。</p>
+      <span class="tags"><span>PWA</span><span data-i18n="own">自分用</span></span>
+    </div>
+    <div class="card prod">
+      <span class="n"><span class="e" aria-hidden="true">🧪</span><span data-i18n="p6n">化粧品成分検定1級 学習ノート</span></span>
+      <p data-i18n="p6d">成分の学習と問題演習の記録を端末に保存する、受験勉強用のPWA。</p>
+      <span class="tags"><span>PWA</span><span data-i18n="own">自分用</span></span>
+    </div>
   </section>
 
   <section id="cosme">
@@ -256,7 +266,9 @@ nav.dock a[aria-current="true"]{width:72px;height:72px;margin:-10px 0;color:#fff
 
   var EN={role:"Maker / Cosme Ingredient Notes",since:"GitHub",less:"Less",more:"More",latestK:"Posting daily",latestT:"#コスメ成分ノート",latestS:"X at 9:00 / 13:00 / 19:00",
     product:"Things I made",seeMore:"See more",
-    p2n:"Skincare Note",p2d:"A free skincare PWA: register products, plan morning and night routines by weekday, and check overlapping ingredients.",
+    p2n:"Skincare Book",p2d:"A free PWA to register your cosmetics and plan morning and night routines by weekday. It also flags overlapping ingredients and combinations said to irritate.",
+    p5n:"Japan Cosmetic Exam Lv.1 Study Notes",p5d:"A study PWA for the exam: study plan, per-question records and accuracy, a mistakes notebook, and last-minute flashcards.",
+    p6n:"Cosmetic Ingredient Exam Lv.1 Study Notes",p6d:"A study PWA that keeps ingredient notes and practice-question records on your device.",own:"Personal",
     p4n:"Workout Log",p4d:"A workout PWA for the gym that fills in your next weights automatically. Start from a template; no login, data stays on your device.",
     cosme:"What I post",cnT:"4 posts a day",cnS:"X 3 times a day · Instagram at 9:00",
     me:"About me",meText:"I love cosmetic ingredients and building small apps that make everyday life easier. I keep up strength training, too.",links:"Links"};
