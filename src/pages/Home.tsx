@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Boxes, FlaskConical, UserRound, Link2, ExternalLink } from 'lucide-react'
+import { Boxes, FlaskConical, UserRound, Link2, ExternalLink, ChevronRight } from 'lucide-react'
 import { ContributionGraph } from '../components/ContributionGraph'
 import { Reveal } from '../components/Reveal'
 import { SectionHeader } from '../components/SectionHeader'
@@ -11,6 +11,8 @@ import { useLang } from '../i18n'
 import { isHydrated } from '../hydration'
 import { products } from '../data/products'
 import type { Tab } from '../types'
+
+const HOME_PRODUCT_COUNT = 2
 
 function useVisitCounter() {
   const [visits, setVisits] = useState<number | null>(null)
@@ -91,7 +93,7 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
       <section className="mb-14">
         <Reveal direction="left"><SectionHeader eyebrow="Product" title={lang === 'ja' ? '作ったもの' : 'Things I made'} icon={<Boxes size={18} className="text-accent-400" />} onMore={() => onNavigate('product')} /></Reveal>
         <div className="grid grid-cols-1 gap-3">
-          {products.map((product, i) => (
+          {products.slice(0, HOME_PRODUCT_COUNT).map((product, i) => (
             <Reveal key={product.app} direction="left" delay={0.08 + i * 0.05}>
               <button type="button" onClick={() => onNavigate('product')} className="block w-full rounded-3xl border border-ink-200/60 bg-profile-card p-5 text-left shadow-softer transition active:scale-[0.98]">
                 <div className="mb-2 flex items-center gap-2"><span className="text-2xl">{product.emoji}</span><span className="font-black text-ink-900">{l(product.name)}</span></div>
@@ -103,6 +105,14 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
               </button>
             </Reveal>
           ))}
+          {products.length > HOME_PRODUCT_COUNT && (
+            <Reveal direction="left" delay={0.08 + HOME_PRODUCT_COUNT * 0.05}>
+              <button type="button" onClick={() => onNavigate('product')} className="flex w-full items-center justify-center gap-1 rounded-full border border-ink-200/60 bg-profile-card px-4 py-3 text-sm font-bold text-ink-500 shadow-softer transition hover:border-accent-300 hover:text-accent-500 active:scale-[0.98]">
+                {lang === 'ja' ? `ほか${products.length - HOME_PRODUCT_COUNT}件をもっと見る` : `See ${products.length - HOME_PRODUCT_COUNT} more`}
+                <ChevronRight size={15} />
+              </button>
+            </Reveal>
+          )}
         </div>
       </section>
 
