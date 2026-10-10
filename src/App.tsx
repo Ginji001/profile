@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ComponentType } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type ComponentType } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BottomNav } from './components/BottomNav'
 import { Home } from './pages/Home'
@@ -18,13 +18,15 @@ const pages: Record<Tab, ComponentType<{ onNavigate: (tab: Tab) => void }>> = {
   me: Me,
   links: Links,
 }
+const EditPage = lazy(() => import('./edit/EditPage'))
 
 function tabIndex(tab: Tab | null) {
   return TAB_ORDER.indexOf(tab ?? 'home')
 }
 
-export default function App({ initialTab }: { initialTab: Tab | null }) {
+export default function App({ initialTab, initialEditor = false }: { initialTab: Tab | null; initialEditor?: boolean }) {
   const [tab, setTab] = useState<Tab | null>(initialTab)
+  const [isEditor, setIsEditor] = useState(initialEditor)
   const prevIndex = useRef(tabIndex(tab))
 
   useEffect(() => markHydrated(), [])
@@ -38,6 +40,7 @@ export default function App({ initialTab }: { initialTab: Tab | null }) {
 
   useEffect(() => {
     const onPopState = () => {
+      setIsEditor(normalizePath(window.location.pathname) === '/profile/edit')
       const next = tabFromPath(window.location.pathname)
       setTab((current) => {
         prevIndex.current = tabIndex(current)
@@ -56,6 +59,8 @@ export default function App({ initialTab }: { initialTab: Tab | null }) {
     window.history.pushState(null, '', TAB_PATHS[next])
   }
   const Page = tab ? pages[tab] : NotFound
+
+  if (isEditor) return <Suspense fallback={<div className="min-h-dvh bg-ink-50 p-6 text-ink-600">編集ページを読み込んでいます…</div>}><EditPage /></Suspense>
 
   return (
     <div className="relative min-h-dvh overflow-hidden bg-ink-50">

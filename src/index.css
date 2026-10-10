@@ -165,3 +165,40 @@
     scrollbar-width: none;
   }
 }
+
+.edit-page .edit-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: var(--color-ink-700);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.edit-page .edit-field input:not([type='checkbox']),
+.edit-page .edit-field textarea,
+.edit-page .edit-field select,
+.edit-array-input {
+  width: 100%;
+  min-height: 3.25rem;
+  border: 1px solid var(--color-ink-200);
+  border-radius: 1rem;
+  background: var(--color-profile-card);
+  padding: 0.75rem 1rem;
+  color: var(--color-ink-800);
+  font: inherit;
+  font-weight: 400;
+  outline: none;
+}
+.edit-page .edit-field textarea { min-height: 6rem; resize: vertical; }
+.edit-page .edit-field input:focus,
+.edit-page .edit-field textarea:focus,
+.edit-page .edit-field select:focus,
+.edit-array-input:focus { border-color: var(--color-accent-400); box-shadow: 0 0 0 3px var(--color-accent-100); }
+.edit-page .edit-field input[type='checkbox'] { width: 1.4rem; height: 1.4rem; accent-color: var(--color-accent-500); }
+.edit-error { display: block; color: #b42318; font-size: 0.82rem; font-weight: 700; line-height: 1.5; }
+.edit-add { display: inline-flex; min-height: 2.9rem; align-items: center; gap: 0.45rem; margin-top: 0.75rem; border-radius: 0.9rem; padding: 0.5rem 0.85rem; color: var(--color-accent-600); font-weight: 800; }
+.edit-add:hover { background: var(--color-accent-50); }
+.edit-icon-button { display: inline-flex; width: 2.5rem; height: 2.5rem; align-items: center; justify-content: center; border: 1px solid var(--color-ink-200); border-radius: 0.8rem; color: var(--color-ink-600); }
+.edit-icon-button:disabled { opacity: 0.35; }
+.edit-save-dock { position: fixed; z-index: 50; inset-inline: 0; bottom: 0; padding: 0.75rem 1rem calc(env(safe-area-inset-bottom) + 0.8rem); border-top: 1px solid color-mix(in srgb, var(--color-ink-200) 65%, transparent); background: color-mix(in srgb, var(--color-ink-50) 88%, transparent); backdrop-filter: blur(14px); }

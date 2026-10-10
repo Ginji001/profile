@@ -1,6 +1,7 @@
 import { PageHeader } from '../components/PageHeader'
 import { Reveal } from '../components/Reveal'
 import { GithubLogo, XLogo } from '../components/BrandIcons'
+import { Link2 } from 'lucide-react'
 import { useLang } from '../i18n'
 import { content } from '../content'
 
@@ -13,7 +14,7 @@ export function Links() {
         {content.links.map(({ name, handle, url, color, icon }, index) => (
           <Reveal key={name} direction={index % 2 === 0 ? 'left' : 'right'} delay={index * 0.04}>
             <a href={url} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-3xl border border-ink-200/60 bg-profile-card p-3 shadow-softer transition hover:border-accent-300 active:scale-[0.98]">
-              <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${color} text-white`}>{icon === 'github' ? <GithubLogo size={22} /> : icon === 'x' ? <XLogo size={22} /> : icon === 'instagram' ? <InstagramMark size={22} /> : <NoteMark size={22} />}</span>
+              <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${color} text-white`}>{icon === 'github' ? <GithubLogo size={22} /> : icon === 'x' ? <XLogo size={22} /> : icon === 'instagram' ? <InstagramMark size={22} /> : icon === 'note' ? <NoteMark size={22} /> : <Link2 size={22} />}</span>
               <span><b className="block font-black text-ink-900">{name}</b><small className="text-sm text-ink-500">{handle}</small></span>
               <span className="ml-auto text-ink-400">↗</span>
             </a>
