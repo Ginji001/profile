@@ -9,6 +9,7 @@ import { LinkIconButton } from '../components/LinkIconButton'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLang } from '../i18n'
 import { isHydrated } from '../hydration'
+import { products } from '../data/products'
 import type { Tab } from '../types'
 
 function useVisitCounter() {
@@ -51,7 +52,7 @@ function useVisitCounter() {
 }
 
 export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
-  const { t, lang } = useLang()
+  const { t, l, lang } = useLang()
   const visits = useVisitCounter()
 
   return (
@@ -89,13 +90,20 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
 
       <section className="mb-14">
         <Reveal direction="left"><SectionHeader eyebrow="Product" title={lang === 'ja' ? '作ったもの' : 'Things I made'} icon={<Boxes size={18} className="text-accent-400" />} onMore={() => onNavigate('product')} /></Reveal>
-        <Reveal direction="left" delay={0.08}>
-          <button type="button" onClick={() => onNavigate('product')} className="block w-full rounded-3xl border border-ink-200/60 bg-profile-card p-5 text-left shadow-softer transition active:scale-[0.98]">
-            <div className="mb-2 flex items-center gap-2"><span className="text-2xl">🧴</span><span className="font-black text-ink-900">スキンケア帳</span></div>
-            <p className="mb-3 text-sm text-ink-500">{lang === 'ja' ? '化粧品の登録と、曜日ごとの朝・夜ルーティンを管理する無料のPWA。成分の重なりや、刺激が出やすいとされる組み合わせも表示。' : 'A free PWA to register your cosmetics and plan morning and night routines by weekday. It also flags overlapping ingredients and combinations said to irritate.'}</p>
-            <div className="flex flex-wrap gap-1.5"><span className="rounded-full bg-accent-50 px-2.5 py-1 text-[11px] font-bold text-accent-500">PWA</span><span className="rounded-full bg-accent-50 px-2.5 py-1 text-[11px] font-bold text-accent-500">Skincare</span></div>
-          </button>
-        </Reveal>
+        <div className="grid grid-cols-1 gap-3">
+          {products.map((product, i) => (
+            <Reveal key={product.app} direction="left" delay={0.08 + i * 0.05}>
+              <button type="button" onClick={() => onNavigate('product')} className="block w-full rounded-3xl border border-ink-200/60 bg-profile-card p-5 text-left shadow-softer transition active:scale-[0.98]">
+                <div className="mb-2 flex items-center gap-2"><span className="text-2xl">{product.emoji}</span><span className="font-black text-ink-900">{l(product.name)}</span></div>
+                <p className="mb-3 text-sm text-ink-500">{l(product.description)}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {product.tags.map((tag) => <span key={tag} className="rounded-full bg-accent-50 px-2.5 py-1 text-[11px] font-bold text-accent-500">{tag}</span>)}
+                  {'unofficial' in product && product.unofficial && <span className="rounded-full bg-accent-50 px-2.5 py-1 text-[11px] font-bold text-accent-500">{t('product.own')}</span>}
+                </div>
+              </button>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <section className="mb-14">
