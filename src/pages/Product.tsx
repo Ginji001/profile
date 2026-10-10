@@ -5,7 +5,7 @@ import { Reveal } from '../components/Reveal'
 import { GithubLogo } from '../components/BrandIcons'
 import { useLang } from '../i18n'
 import { isHydrated } from '../hydration'
-import { products } from '../data/products'
+import { content } from '../content'
 
 export function Product() {
   const { t, l } = useLang()
@@ -14,7 +14,7 @@ export function Product() {
     <div className="mx-auto max-w-2xl px-5 pt-10 pb-6">
       <PageHeader eyebrow="Product" title={t('product.title')} description={t('product.description')} />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {products.map((product, i) => (
+        {content.products.map((product, i) => (
           <Reveal key={product.app} direction="up" delay={(i % 2) * 0.06}>
             <motion.div initial={isHydrated() ? { opacity: 0, y: 24 } : false} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-60px' }} transition={{ duration: 0.45, delay: (i % 2) * 0.06 }} className="h-full rounded-3xl border border-ink-200/60 bg-profile-card p-5 shadow-softer">
               <div className="mb-2 flex items-center gap-2"><span className="text-2xl">{product.emoji}</span><h2 className="font-black text-ink-900">{l(product.name)}</h2></div>
@@ -31,7 +31,7 @@ export function Product() {
           </Reveal>
         ))}
       </div>
-      <p className="mt-6 text-xs font-bold text-ink-400">ほかのリポジトリは <a href="https://github.com/Ginji001?tab=repositories" target="_blank" rel="noreferrer" className="text-accent-500">GitHub</a> へ。</p>
+      <p className="mt-6 text-xs font-bold text-ink-400">{l(content.otherRepositories.text)} <a href={content.otherRepositories.url} target="_blank" rel="noreferrer" className="text-accent-500">{l(content.otherRepositories.label)}</a> へ。</p>
     </div>
   )
 }

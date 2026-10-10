@@ -1,11 +1,21 @@
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
+import { readFileSync } from 'node:fs'
+import { parse } from 'yaml'
 
 export default defineConfig({
   base: '/profile/',
   publicDir: 'site',
   plugins: [
+    {
+      name: 'profile-content-yaml',
+      transform(_code, id) {
+        if (!id.endsWith('/content.yaml')) return null
+        const source = readFileSync(id, 'utf8')
+        return `const content = ${JSON.stringify(parse(source))}; export default content;`
+      },
+    },
     react(),
     tailwindcss(),
     {

@@ -1,0 +1,104 @@
+# プロフィールサイトに表示する内容です。日本語と英語の両方を編集できます。
+# 画面の順に、Home → Me → Links → Cosme → 作ったものを並べています。
+
+# Homeに出る表示名と自己紹介です。例: ja: "銀次" / en: "Ginji"
+profile:
+  name: { ja: "銀次", en: "Ginji" }
+  role: { ja: "つくる人 / コスメ成分ノート", en: "Maker / Cosme Ingredient Notes" }
+  homeTags: [PWA, JavaScript, "GitHub Pages", Claude, "化粧品成分"]
+  homeAbout: { ja: "化粧品の成分と、身の回りを便利にするアプリづくりが好きです。筋トレも続けています。", en: "I love cosmetic ingredients and building small apps that make everyday life easier. I keep up strength training, too." }
+  latest:
+    label: { ja: "毎日更新中", en: "Posting daily" }
+    title: { ja: "#コスメ成分ノート", en: "#コスメ成分ノート" }
+    schedule: { ja: "X 9:00 / 13:00 / 19:00", en: "X at 9:00 / 13:00 / 19:00" }
+
+# Meタブの自己紹介・項目・使っている環境です。項目は表示順に並べます。
+# 例: { ja: ["項目"], en: ["Item"] }
+me:
+  about: { ja: "化粧品の成分と、身の回りを便利にするアプリづくりが好きです。筋トレも続けています。", en: "I love cosmetic ingredients and building small apps that make everyday life easier. I keep up strength training, too." }
+  skills: [PWA, JavaScript, "GitHub Pages", "GitHub Actions", Claude]
+  likes: { ja: ["化粧品成分", "スキンケア"], en: ["Cosmetic ingredients", Skincare] }
+  hobbies: { ja: ["アプリづくり", "筋トレ", "発信"], en: ["Making apps", "Strength training", Posting] }
+  studying: { ja: ["日本化粧品検定1級", "化粧品成分検定1級"], en: ["Japan Cosmetic Exam Lv.1", "Cosmetic Ingredient Exam Lv.1"] }
+  setup:
+    main: { ja: "MacBook Air", en: "MacBook Air" }
+    server: { ja: "自宅のWindows PC", en: "Windows PC at home" }
+
+# LinksタブのSNS・外部サービスです。nameとhandleは画面表示、urlはリンク先です。
+# 例: { name: "GitHub", handle: "user", url: "https://github.com/user", color: "from-neutral-700 to-neutral-500", icon: github }
+links:
+  - { name: GitHub, handle: Ginji001, url: "https://github.com/Ginji001", color: "from-neutral-700 to-neutral-500", icon: github }
+  - { name: X, handle: "@emiya2170", url: "https://x.com/emiya2170", color: "from-sky-500 to-blue-500", icon: x }
+  - { name: Instagram, handle: "@g.mitui", url: "https://www.instagram.com/g.mitui/", color: "from-orange-300 to-orange-700", icon: instagram }
+  - { name: note, handle: emiya001, url: "https://note.com/emiya001", color: "from-emerald-400 to-emerald-600", icon: note }
+
+# Cosmeタブの発信内容・投稿時間・タグ・各アカウントです。URLはhttps://から書きます。
+cosme:
+  brand: "COSME INGREDIENT NOTE"
+  daily: { ja: "毎日 4 投稿", en: "4 posts a day" }
+  schedule: { ja: "X 1日3回 ・ Instagram 毎朝9時", en: "X 3 times a day · Instagram at 9:00" }
+  description: { ja: "化粧品の成分を1つずつ、短いメモにして毎日発信しています。", en: "Short notes on one cosmetic ingredient at a time, every day." }
+  x:
+    title: { ja: "X（1日3回）", en: "X (3 times a day)" }
+    times: ["9:00", "13:00", "19:00"]
+    description: { ja: "成分のメモをシリーズで投稿。タグ #コスメ成分ノート で過去の投稿をまとめて見られます。", en: "A series of ingredient notes. Browse past posts with the tag #コスメ成分ノート." }
+    account: "@emiya2170"
+    url: "https://x.com/emiya2170"
+    tag: "#コスメ成分ノート"
+    tagUrl: "https://x.com/search?q=%23%E3%82%B3%E3%82%B9%E3%83%A1%E6%88%90%E5%88%86%E3%83%8E%E3%83%BC%E3%83%88&f=live"
+  instagram:
+    title: { ja: "Instagram（毎朝9時）", en: "Instagram (every morning at 9)" }
+    description: { ja: "成分メモをカード画像にして、1日1枚投稿しています。", en: "One ingredient note a day, as a card image." }
+    account: "@g.mitui"
+    url: "https://www.instagram.com/g.mitui/"
+  note:
+    name: note
+    description: { ja: "長めの文章はnoteに書いています。", en: "Longer writing goes on note." }
+    account: emiya001
+    url: "https://note.com/emiya001"
+
+# 作ったもの一覧です。説明・名前はja/en両方、tagsは表示順に書きます。
+# 例: { emoji: "🧴", name: { ja: "名前", en: "Name" }, description: { ja: "説明", en: "Description" }, tags: [PWA], live: true, app: "https://example.com/", code: "https://github.com/user/repo" }
+products:
+  - emoji: "🧴"
+    name: { ja: "スキンケア帳", en: "Skincare Book" }
+    description: { ja: "化粧品の登録と、曜日ごとの朝・夜ルーティンを管理する無料のPWA。成分の重なりや、刺激が出やすいとされる組み合わせも表示。", en: "A free PWA to register your cosmetics and plan morning and night routines by weekday. It also flags overlapping ingredients and combinations said to irritate." }
+    tags: [PWA, Skincare]
+    live: true
+    app: "https://ginji001.github.io/skincare-pwa/"
+    code: "https://github.com/Ginji001/skincare-pwa"
+  - emoji: "🏋️"
+    name: { ja: "筋トレ記録", en: "Workout Log" }
+    description: { ja: "ジムのトレーニングを記録して、次回の重量を自動で入れる筋トレPWA。テンプレートからメニューを作れ、ログイン不要でデータは端末の中だけ。", en: "A workout PWA for the gym that fills in your next weights automatically. Start from a template; no login, data stays on your device." }
+    tags: [PWA, Workout]
+    live: true
+    app: "https://ginji001.github.io/kintore-log/"
+    code: "https://github.com/Ginji001/kintore-log"
+  - emoji: "📒"
+    name: { ja: "日本化粧品検定1級 学習ノート", en: "Japan Cosmetic Exam Lv.1 Study Notes" }
+    description: { ja: "学習計画、問題ごとの記録と正答率、間違いノート、直前暗記カードをまとめた受験勉強用のPWA。", en: "A study PWA for the exam: study plan, per-question records and accuracy, a mistakes notebook, and last-minute flashcards." }
+    tags: [PWA]
+    live: true
+    app: "https://ginji001.github.io/cosme-kentei-note/"
+    code: "https://github.com/Ginji001/cosme-kentei-note"
+    unofficial: true
+  - emoji: "🧪"
+    name: { ja: "化粧品成分検定1級 学習ノート", en: "Cosmetic Ingredient Exam Lv.1 Study Notes" }
+    description: { ja: "成分のまとめ、問題演習の記録と正答率、直前暗記カードをまとめた受験勉強用のPWA。", en: "A study PWA with ingredient notes, practice-question records and accuracy, and last-minute flashcards." }
+    tags: [PWA]
+    live: true
+    app: "https://ginji001.github.io/seibun-kentei-note/"
+    code: "https://github.com/Ginji001/seibun-kentei-note"
+    unofficial: true
+  - emoji: "🐾"
+    name: { ja: "ハチワレ手帳", en: "Hachiware Notebook" }
+    description: { ja: "デイリー、マンスリー、INBOX、習慣、コレクション、ほしい物リストをまとめた手帳PWA。ログイン不要で、写真も含めてデータは端末の中だけ。", en: "A notebook PWA with daily and monthly pages, an inbox, habits, collections, and a wishlist. No login; data, including photos, stays on your device." }
+    tags: [PWA, Notebook]
+    live: true
+    app: "https://ginji001.github.io/hachiware-techo/"
+    code: "https://github.com/Ginji001/hachiware-techo"
+# 作ったもの欄の最後に出るGitHub案内です。URLと表示文を編集できます。
+otherRepositories:
+  text: { ja: "ほかのリポジトリは", en: "ほかのリポジトリは" }
+  label: { ja: "GitHub", en: "GitHub" }
+  url: "https://github.com/Ginji001?tab=repositories"

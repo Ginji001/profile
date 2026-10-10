@@ -4,6 +4,8 @@
 
 このサイトは [yksr-melt/profile-page](https://github.com/yksr-melt/profile-page)（MIT）を元にしています。ライセンス表記は [LICENSE](LICENSE) を参照してください。
 
+表示内容の編集はリポジトリ直下の `content.yaml` だけで行えます（手順は [編集のしかた.md](編集のしかた.md)）。
+
 ## 開発
 
 Node.js 22.14.0 を使います。

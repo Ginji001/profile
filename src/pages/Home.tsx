@@ -9,7 +9,7 @@ import { LinkIconButton } from '../components/LinkIconButton'
 import { LanguageToggle } from '../components/LanguageToggle'
 import { useLang } from '../i18n'
 import { isHydrated } from '../hydration'
-import { products } from '../data/products'
+import { content } from '../content'
 import type { Tab } from '../types'
 
 const HOME_PRODUCT_COUNT = 2
@@ -67,10 +67,10 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
       >
         <div className="mb-5 flex justify-end"><LanguageToggle /></div>
         <div className="mb-4 flex items-center gap-4">
-          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[22px] bg-gradient-to-br from-accent-300 via-accent-400 to-accent-500 text-2xl font-black text-white shadow-soft" aria-hidden="true">銀</div>
+          <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[22px] bg-gradient-to-br from-accent-300 via-accent-400 to-accent-500 text-2xl font-black text-white shadow-soft" aria-hidden="true">{content.profile.name.ja.slice(0, 1)}</div>
           <div>
-            <h1 className="text-2xl font-black tracking-tight text-ink-900">銀次 <span className="font-medium text-ink-400">/</span> Ginji</h1>
-            <p className="text-sm font-bold text-ink-500">{t('home.role')}</p>
+            <h1 className="text-2xl font-black tracking-tight text-ink-900">{content.profile.name.ja} <span className="font-medium text-ink-400">/</span> {content.profile.name.en}</h1>
+            <p className="text-sm font-bold text-ink-500">{l(content.profile.role)}</p>
           </div>
         </div>
         {visits !== null && <span className="inline-flex items-center gap-1.5 rounded-full bg-profile-card px-3.5 py-1.5 text-xs font-bold text-ink-500 shadow-softer">{t('home.visits')} <b className="text-ink-900">{visits.toLocaleString(lang)}</b></span>}
@@ -82,9 +82,9 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
         <a href="https://x.com/emiya2170" target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-3xl border border-ink-200/60 bg-profile-card p-4 shadow-softer transition hover:border-accent-300">
           <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent-300 to-accent-500 text-white"><FlaskConical size={28} /></span>
           <span>
-            <span className="block text-xs font-bold text-accent-500">{t('home.latestK')}</span>
-            <span className="mt-0.5 block font-black text-ink-900">{t('home.latestT')}</span>
-            <span className="text-sm text-ink-500">{t('home.latestS')}</span>
+            <span className="block text-xs font-bold text-accent-500">{l(content.profile.latest.label)}</span>
+            <span className="mt-0.5 block font-black text-ink-900">{l(content.profile.latest.title)}</span>
+            <span className="text-sm text-ink-500">{l(content.profile.latest.schedule)}</span>
           </span>
           <ExternalLink size={15} className="ml-auto shrink-0 text-ink-300" />
         </a>
@@ -93,7 +93,7 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
       <section className="mb-14">
         <Reveal direction="left"><SectionHeader eyebrow="Product" title={lang === 'ja' ? '作ったもの' : 'Things I made'} icon={<Boxes size={18} className="text-accent-400" />} onMore={() => onNavigate('product')} /></Reveal>
         <div className="grid grid-cols-1 gap-3">
-          {products.slice(0, HOME_PRODUCT_COUNT).map((product, i) => (
+          {content.products.slice(0, HOME_PRODUCT_COUNT).map((product, i) => (
             <Reveal key={product.app} direction="left" delay={0.08 + i * 0.05}>
               <button type="button" onClick={() => onNavigate('product')} className="block w-full rounded-3xl border border-ink-200/60 bg-profile-card p-5 text-left shadow-softer transition active:scale-[0.98]">
                 <div className="mb-2 flex items-center gap-2"><span className="text-2xl">{product.emoji}</span><span className="font-black text-ink-900">{l(product.name)}</span></div>
@@ -105,10 +105,10 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
               </button>
             </Reveal>
           ))}
-          {products.length > HOME_PRODUCT_COUNT && (
+          {content.products.length > HOME_PRODUCT_COUNT && (
             <Reveal direction="left" delay={0.08 + HOME_PRODUCT_COUNT * 0.05}>
               <button type="button" onClick={() => onNavigate('product')} className="flex w-full items-center justify-center gap-1 rounded-full border border-ink-200/60 bg-profile-card px-4 py-3 text-sm font-bold text-ink-500 shadow-softer transition hover:border-accent-300 hover:text-accent-500 active:scale-[0.98]">
-                {lang === 'ja' ? `ほか${products.length - HOME_PRODUCT_COUNT}件をもっと見る` : `See ${products.length - HOME_PRODUCT_COUNT} more`}
+                {lang === 'ja' ? `ほか${content.products.length - HOME_PRODUCT_COUNT}件をもっと見る` : `See ${content.products.length - HOME_PRODUCT_COUNT} more`}
                 <ChevronRight size={15} />
               </button>
             </Reveal>
@@ -120,7 +120,7 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
         <Reveal direction="right"><SectionHeader eyebrow="Cosme" title={t('cosme.title')} icon={<FlaskConical size={18} className="text-accent-400" />} onMore={() => onNavigate('cosme')} /></Reveal>
         <Reveal direction="right" delay={0.08}>
           <button type="button" onClick={() => onNavigate('cosme')} className="profile-dark-card flex w-full items-center justify-between rounded-3xl p-6 text-left text-white transition active:scale-[0.98]">
-            <span><span className="profile-dark-accent block text-xs font-bold tracking-wide">COSME INGREDIENT NOTE</span><span className="mt-1 block text-xl font-black">{t('cosme.daily')}</span><span className="mt-1 block text-xs text-zinc-300">{t('cosme.schedule')}</span></span>
+            <span><span className="profile-dark-accent block text-xs font-bold tracking-wide">{content.cosme.brand}</span><span className="mt-1 block text-xl font-black">{l(content.cosme.daily)}</span><span className="mt-1 block text-xs text-zinc-300">{l(content.cosme.schedule)}</span></span>
             <FlaskConical size={36} className="shrink-0 text-zinc-200" />
           </button>
         </Reveal>
@@ -130,8 +130,8 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
         <Reveal direction="left"><SectionHeader eyebrow="Me" title={t('me.title')} icon={<UserRound size={18} className="text-accent-400" />} onMore={() => onNavigate('me')} /></Reveal>
         <Reveal direction="left" delay={0.08}>
           <button type="button" onClick={() => onNavigate('me')} className="block w-full rounded-3xl border border-ink-200/60 bg-profile-card p-5 text-left shadow-softer transition active:scale-[0.98]">
-            <p className="text-sm leading-7 text-ink-500">{t('me.about')}</p>
-            <div className="mt-3 flex flex-wrap gap-1.5">{['PWA', 'JavaScript', 'GitHub Pages', 'Claude', '化粧品成分'].map((tag) => <span key={tag} className="rounded-full bg-ink-100 px-2.5 py-1 text-[11px] font-medium text-ink-700">{tag}</span>)}</div>
+            <p className="text-sm leading-7 text-ink-500">{l(content.profile.homeAbout)}</p>
+            <div className="mt-3 flex flex-wrap gap-1.5">{content.profile.homeTags.map((tag) => <span key={tag} className="rounded-full bg-ink-100 px-2.5 py-1 text-[11px] font-medium text-ink-700">{tag}</span>)}</div>
           </button>
         </Reveal>
       </section>
@@ -140,10 +140,7 @@ export function Home({ onNavigate }: { onNavigate: (tab: Tab) => void }) {
         <Reveal direction="right"><SectionHeader eyebrow="Links" title={t('links.title')} icon={<Link2 size={18} className="text-accent-400" />} onMore={() => onNavigate('links')} /></Reveal>
         <Reveal direction="right" delay={0.08}>
           <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">
-            <LinkIconButton href="https://github.com/Ginji001" color="from-neutral-700 to-neutral-500" name="GitHub" handle="Ginji001" Icon={GithubLogo} />
-            <LinkIconButton href="https://x.com/emiya2170" color="from-sky-500 to-blue-500" name="X" handle="@emiya2170" Icon={XLogo} />
-            <LinkIconButton href="https://www.instagram.com/g.mitui/" color="from-orange-300 to-orange-700" name="Instagram" handle="@g.mitui" Icon={InstagramMark} />
-            <LinkIconButton href="https://note.com/emiya001" color="from-emerald-400 to-emerald-600" name="note" handle="emiya001" Icon={NoteMark} />
+            {content.links.map((link) => <LinkIconButton key={link.name} href={link.url} color={link.color} name={link.name} handle={link.handle} Icon={link.icon === 'github' ? GithubLogo : link.icon === 'x' ? XLogo : link.icon === 'instagram' ? InstagramMark : NoteMark} />)}
           </div>
         </Reveal>
       </section>
