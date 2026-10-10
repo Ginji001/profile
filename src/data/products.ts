@@ -31,4 +31,12 @@ export const products = [
     }, tags: ['PWA'], live: true,
     app: 'https://ginji001.github.io/seibun-kentei-note/', code: 'https://github.com/Ginji001/seibun-kentei-note', unofficial: true,
   },
+  {
+    emoji: '🐾', name: { ja: 'ハチワレ手帳', en: 'Hachiware Notebook' },
+    description: {
+      ja: 'デイリー、マンスリー、INBOX、習慣、コレクション、ほしい物リストをまとめた手帳PWA。ログイン不要で、写真も含めてデータは端末の中だけ。',
+      en: 'A notebook PWA with daily and monthly pages, an inbox, habits, collections, and a wishlist. No login; data, including photos, stays on your device.',
+    }, tags: ['PWA', 'Notebook'], live: true,
+    app: 'https://ginji001.github.io/hachiware-techo/', code: 'https://github.com/Ginji001/hachiware-techo',
+  },
 ]
