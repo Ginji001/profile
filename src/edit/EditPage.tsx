@@ -3,7 +3,7 @@ import { isScalar, type Document } from 'yaml'
 import { ArrowDown, ArrowUp, Plus, Trash2 } from 'lucide-react'
 import { validateContent, type ContentIssue } from './validateContent.mjs'
 
-const TOKEN_URL = 'https://github.com/settings/personal-access-tokens/new?name=' + encodeURIComponent('プロフィール編集ページ') + '&description=' + encodeURIComponent('ginji001.github.io/profile/edit から content.yaml を更新する') + '&target_name=Ginji001&expires_in=366&contents=write&actions=read'
+const TOKEN_URL = 'https://github.com/settings/personal-access-tokens/new?name=' + encodeURIComponent('プロフィール編集ページ') + '&description=' + encodeURIComponent('ginji001.github.io/profile/edit から content.yaml を更新する') + '&target_name=Ginji001&contents=write&actions=read'
 const TOKEN_KEY = 'ginji-profile-edit-token'
 const API = 'https://api.github.com/repos/Ginji001/profile'
 const MANUAL = 'https://github.com/Ginji001/profile/blob/main/%E7%B7%A8%E9%9B%86%E3%81%AE%E3%81%97%E3%81%8B%E3%81%9F.md'
@@ -185,7 +185,7 @@ export default function EditPage() {
       <h2 className="text-xl font-extrabold">編集用の鍵を設定</h2>
       <p className="mt-3 leading-relaxed text-ink-600">最初に一度だけ、GitHubで編集用の鍵を作ってここに貼り付けます。鍵はこの端末のブラウザだけに保存されます。</p>
       <ol className="mt-3 list-decimal space-y-1 pl-5 text-sm leading-relaxed text-ink-600">
-        <li>下の「GitHubで鍵を作る」を押す（名前・期限・権限は入力済みで開きます）</li>
+        <li>下の「GitHubで鍵を作る」を押す（名前と権限は入力済みで開きます。期限は <b>Expiration</b> で確認・変更できます）</li>
         <li><b>Repository access</b> で <b>Only select repositories</b> を選び、<b>profile</b> を選ぶ</li>
         <li>一番下の <b>Generate token</b> を押し、出てきた鍵をコピーする（一度しか表示されません）</li>
         <li>この画面に戻って貼り付け、「この端末に鍵を保存」を押す</li>
