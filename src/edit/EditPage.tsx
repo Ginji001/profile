@@ -74,6 +74,7 @@ function Field({ label, path, kind, data, issues, onChange }: { label: string; p
 export default function EditPage() {
   const [token, setToken] = useState('')
   const [keySaved, setKeySaved] = useState(false)
+  const [savedSource, setSavedSource] = useState('')
   const [doc, setDoc] = useState<Document | null>(null)
   const [data, setData] = useState<any>(null)
   const [sha, setSha] = useState('')
@@ -104,7 +105,7 @@ export default function EditPage() {
       const body = await response.json()
       const source = b64ToUtf8(body.content)
       const result = validateContent(source)
-      setDoc(result.document); setData(result.document.toJS()); setSha(body.sha); setIssues(result.issues)
+      setDoc(result.document); setData(result.document.toJS()); setSha(body.sha); setIssues(result.issues); setSavedSource(result.document.toString({ lineWidth: 0, flowCollectionPadding: false }))
       setMessage('最新の内容を読み込みました')
     } catch (error) { setMessage(error instanceof Error ? error.message : '読み込みに失敗しました') }
     finally { setBusy(false) }
@@ -142,6 +143,7 @@ export default function EditPage() {
   async function save() {
     if (!doc || !token || !sha) return
     const source = doc.toString({ lineWidth: 0, flowCollectionPadding: false })
+    if (source === savedSource) { setMessage('変更がないので保存していません'); return }
     const validation = validateContent(source)
     setIssues(validation.issues)
     if (validation.issues.length) { setMessage('入力内容を確認してください'); document.querySelector('.edit-error')?.scrollIntoView({ behavior: 'smooth', block: 'center' }); return }
@@ -150,7 +152,7 @@ export default function EditPage() {
       const response = await fetch(`${API}/contents/content.yaml`, { method: 'PUT', headers: { ...apiHeaders(token), 'Content-Type': 'application/json' }, body: JSON.stringify({ message: '編集ページから内容を更新', content: utf8ToB64(source), sha, branch: 'main' }) })
       if (response.status === 409) { setMessage('別の場所で更新されています。読み込み直してください'); return }
       if (!response.ok) throw new Error(response.status === 401 || response.status === 403 ? '保存できませんでした。鍵の権限を確認してください。' : `保存に失敗しました（${response.status}）`)
-      const result = await response.json(); setSha(result.content?.sha ?? sha)
+      const result = await response.json(); setSha(result.content?.sha ?? sha); setSavedSource(source)
       setMessage('保存しました。公開まで1〜2分かかります。')
       try {
         const runs = await fetch(`${API}/actions/runs?branch=main&per_page=1`, { headers: apiHeaders(token) })
