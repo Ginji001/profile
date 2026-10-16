@@ -4,8 +4,8 @@
 # Homeに出る表示名と自己紹介です。例: ja: "銀次" / en: "Ginji"
 profile:
   name: {ja: "銀次", en: "Ginji"}
-  role: {ja: "つくる人 / コスメ成分ノート", en: "Maker / Cosme Ingredient Notes"}
-  homeTags: [PWA, JavaScript, "GitHub Pages", Claude, "化粧品成分"]
+  role: {ja: "臨床検査技師", en: "Maker / Cosme Ingredient Notes"}
+  homeTags: [PWA, "GitHub Pages", Claude, "化粧品成分"]
   homeAbout: {ja: "化粧品の成分と、身の回りを便利にするアプリづくりが好きです。筋トレも続けています。", en: "I love cosmetic ingredients and building small apps that make everyday life easier. I keep up strength training, too."}
   latest:
     label: {ja: "毎日更新中", en: "Posting daily"}
@@ -16,10 +16,10 @@ profile:
 # 例: { ja: ["項目"], en: ["Item"] }
 me:
   about: {ja: "化粧品の成分と、身の回りを便利にするアプリづくりが好きです。筋トレも続けています。", en: "I love cosmetic ingredients and building small apps that make everyday life easier. I keep up strength training, too."}
-  skills: [PWA, JavaScript, "GitHub Pages", "GitHub Actions", Claude]
-  likes: {ja: ["化粧品成分", "スキンケア"], en: ["Cosmetic ingredients", Skincare]}
-  hobbies: {ja: ["アプリづくり", "筋トレ", "発信"], en: ["Making apps", "Strength training", Posting]}
-  studying: {ja: ["日本化粧品検定1級", "化粧品成分検定1級"], en: ["Japan Cosmetic Exam Lv.1", "Cosmetic Ingredient Exam Lv.1"]}
+  skills: [臨床検査技師・化粧品検定1級・トレース]
+  likes: {ja: [ガジェット全般, 筋トレ, "スキンケア", "化粧品成分"], en: []}
+  hobbies: {ja: ["アプリづくり", "筋トレ", 猫の写真], en: []}
+  studying: {ja: ["化粧品成分検定1級"], en: ["Cosmetic Ingredient Exam Lv.1"]}
   setup:
     main: {ja: "MacBook Air", en: "MacBook Air"}
     server: {ja: "自宅のWindows PC", en: "Windows PC at home"}
