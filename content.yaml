@@ -21,7 +21,7 @@ me:
   hobbies: {ja: ["アプリづくり", "筋トレ", 猫の写真], en: []}
   studying: {ja: ["化粧品成分検定1級"], en: ["Cosmetic Ingredient Exam Lv.1"]}
   setup:
-    main: {ja: "MacBook Air", en: "MacBook Air"}
+    main: {ja: "MacBook Air　Windows11", en: "MacBook Air"}
     server: {ja: "自宅のWindows PC", en: "Windows PC at home"}
 
 # LinksタブのSNS・外部サービスです。nameとhandleは画面表示、urlはリンク先です。
